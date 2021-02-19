@@ -1,0 +1,16 @@
+{
+    "rules": [
+        {
+            "command": "dadi-cli GenerateFs --vcf examples/data/1KG.YRI.CEU.biallelic.synonymous.snps.withanc.strict.vcf.gz --pop-info examples/data/1KG.YRI.CEU.popfile.txt --pop-ids YRI CEU --projections 216 198 --polarized --output examples/results/1KG.YRI.CEU.synonymous.snps.unfold.fs",
+            "inputs": [ "examples/data/1KG.YRI.CEU.biallelic.synonymous.snps.withanc.strict.vcf.gz", "examples/data/1KG.YRI.CEU.popfile.txt" ], "outputs": [ "examples/results/1KG.YRI.CEU.synonymous.snps.unfold.fs" ], "local_job" : true,
+        },
+        {
+            "command": "dadi-cli GenerateFs --vcf examples/data/1KG.YRI.CEU.biallelic.nonsynonymous.snps.withanc.strict.vcf.gz --pop-info examples/data/1KG.YRI.CEU.popfile.txt --pop-ids YRI CEU --projections 216 198 --polarized --output examples/results/1KG.YRI.CEU.nonsynonymous.snps.unfold.fs",
+            "inputs": [ "examples/data/1KG.YRI.CEU.biallelic.nonsynonymous.snps.withanc.strict.vcf.gz", "examples/data/1KG.YRI.CEU.popfile.txt" ], "outputs": [ "examples/results/1KG.YRI.CEU.nonsynonymous.snps.unfold.fs" ], "local_job" : true,
+        },
+        {
+            "command": "dadi-cli InferDM --syn-fs examples/data/1KG.YRI.CEU.synonymous.snps.unfold.fs --model IM_pre --misid --p0 1 1 .5 1 1 1 1 1 .5 --ubounds 10 10 1 10 10 10 10 10 1 --lbounds 10e-3 0 10e-3 10e-3 10e-3 0 0 0 10e-5 --output examples/results/demo/optimization1/1KG.YRI.CEU.IM_pre.demo.params --jobs 16",
+            "inputs": [ "examples/results/1KG.YRI.CEU.synonymous.snps.unfold.fs" ], "outputs": [ "examples/results/demo/optimization1/1KG.YRI.CEU.IM_pre.demo.params" ],
+        },
+    ]
+}
